@@ -95,6 +95,31 @@ def summary(rows):
         print(f"{t:<20} {v['calls']:>6} {fmt(v['out']):>12} {fmt(v['ctx_max']):>14}")
 
 
+def context_pct(session_id):
+    """Context window % for a session, as written by the status line script; None if unknown.
+
+    The percentage can only come from Claude Code itself (the window size depends on the
+    model and plan), so it is read from ~/.claude/context-pct/<session_id> (override the
+    folder with CLAUDE_CONTEXT_PCT_DIR) and ignored when older than 10 minutes.
+    """
+    sid = str(session_id or "")
+    if not sid or not all(c.isalnum() or c in "-_" for c in sid):
+        return None
+    d = Path(os.environ.get("CLAUDE_CONTEXT_PCT_DIR", Path.home() / ".claude" / "context-pct"))
+    f = d / sid
+    try:
+        if time.time() - f.stat().st_mtime > 600:
+            return None
+        return int(f.read_text().strip())
+    except (OSError, ValueError):
+        return None
+
+
+def pct_badge(pct):
+    """Traffic-light marker: green below 25%, yellow up to 40%, red above."""
+    return ("\U0001F7E2" if pct < 25 else "\U0001F7E1" if pct <= 40 else "\U0001F534") + f" {pct}%"
+
+
 def is_mark(r):
     return r.get("type") == "mark"
 
@@ -113,8 +138,10 @@ def add_mark(rows, label, name):
     }
     with open(LOG, "a", encoding="utf-8") as f:
         f.write(json.dumps(mark, ensure_ascii=False) + "\n")
+    pct = context_pct(mark["session_id"])
+    pct_txt = f", {pct_badge(pct)} of the window" if pct is not None else ""
     print(f"Marked {label} '{name}' at {mark['ts'][:19].replace('T', ' ')} "
-          f"(context so far: {fmt(usage[-1]['context_tokens'])} tokens)")
+          f"(context so far: {fmt(usage[-1]['context_tokens'])} tokens{pct_txt})")
 
 
 def locate(rows, name):
