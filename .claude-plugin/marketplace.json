@@ -1,0 +1,11 @@
+{
+  "name": "tokens-tracking",
+  "owner": { "name": "rodrigobahiaviana" },
+  "plugins": [
+    {
+      "name": "token-log",
+      "source": "./",
+      "description": "Per-tool-call token logging with cost reports, skills flow and optimization suggestions."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "unit": "USD per million tokens",
+    "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+    "retrieved": "2026-10-31",
+    "note": "Standard API list prices. Keys are model-id prefixes; the longest matching prefix wins (e.g. claude-opus-5-5 beats claude-opus-5). Edit or add models here, or point CLAUDE_TOKEN_PRICING at your own file. Fields: in = base input, cw5 / cw1 = 5-minute / 1-hour cache write, read = cache read, out = output. A model may set long_over (prompt tokens) and long (a second rate set) for tiered pricing."
+  },
+  "models": {
+    "claude-fable-5-1":   {"in": 10,   "cw5": 12.5,   "cw1": 20,  "read": 0.25, "out": 50},
+    "claude-mythos-5-1":  {"in": 10,   "cw5": 12.5,   "cw1": 20,  "read": 0.25, "out": 50},
+    "claude-fable-5":     {"in": 10,   "cw5": 12.5,   "cw1": 20,  "read": 1,    "out": 50},
+    "claude-mythos-5":    {"in": 10,   "cw5": 12.5,   "cw1": 20,  "read": 1,    "out": 50},
+    "claude-opus-5-5":    {"in": 4,    "cw5": 5,      "cw1": 8,   "read": 0.20, "out": 20},
+    "claude-opus-5":      {"in": 5,    "cw5": 6.25,   "cw1": 10,  "read": 0.50, "out": 25},
+    "claude-opus-4-8":    {"in": 5,    "cw5": 6.25,   "cw1": 10,  "read": 0.50, "out": 25},
+    "claude-opus-4-7":    {"in": 5,    "cw5": 6.25,   "cw1": 10,  "read": 0.50, "out": 25},
+    "claude-opus-4-6":    {"in": 5,    "cw5": 6.25,   "cw1": 10,  "read": 0.50, "out": 25},
+    "claude-opus-4-5":    {"in": 5,    "cw5": 6.25,   "cw1": 10,  "read": 0.50, "out": 25},
+    "claude-opus-4-1":    {"in": 15,   "cw5": 18.75,  "cw1": 30,  "read": 1.50, "out": 75},
+    "claude-opus-4":      {"in": 15,   "cw5": 18.75,  "cw1": 30,  "read": 1.50, "out": 75},
+    "claude-sonnet-5-5":  {"in": 2,    "cw5": 2.5,    "cw1": 4,   "read": 0.10, "out": 10},
+    "claude-sonnet-5":    {"in": 2,    "cw5": 2.5,    "cw1": 4,   "read": 0.20, "out": 10},
+    "claude-sonnet-4-6":  {"in": 3,    "cw5": 3.75,   "cw1": 6,   "read": 0.30, "out": 15},
+    "claude-sonnet-4-5":  {"in": 3,    "cw5": 3.75,   "cw1": 6,   "read": 0.30, "out": 15},
+    "claude-sonnet-4":    {"in": 3,    "cw5": 3.75,   "cw1": 6,   "read": 0.30, "out": 15},
+    "claude-haiku-5-5":   {"in": 0.10, "cw5": 0.125,  "cw1": 0.20, "read": 0.01, "out": 0.50,
+                           "long_over": 100000,
+                           "long": {"in": 0.50, "cw5": 0.625, "cw1": 1, "read": 0.05, "out": 2.50}},
+    "claude-haiku-4-5":   {"in": 1,    "cw5": 1.25,   "cw1": 2,   "read": 0.10, "out": 5},
+    "claude-haiku-3-5":   {"in": 0.80, "cw5": 1,      "cw1": 1.6, "read": 0.08, "out": 4}
+  }
+}

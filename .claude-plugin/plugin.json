@@ -1,0 +1,8 @@
+{
+  "name": "token-log",
+  "version": "1.0.0",
+  "description": "Logs real token usage per tool call and reports cost, skills flow, cache behaviour and optimization suggestions.",
+  "author": { "name": "rodrigobahiaviana" },
+  "repository": "https://github.com/rodrigobv-cit/Tokens-tracking",
+  "keywords": ["tokens", "cost", "usage", "cache", "observability"]
+}
