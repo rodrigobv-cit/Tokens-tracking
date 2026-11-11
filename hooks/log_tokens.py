@@ -2,7 +2,7 @@
 """Claude Code hook: append the real token usage of the latest assistant
 message to a JSONL log, tagged with the tool that was just called.
 
-Wire it to PostToolUse and Stop (see settings.snippet.json).
+Wired to PostToolUse and Stop by hooks/hooks.json.
 Log location: $CLAUDE_TOKEN_LOG or ~/.claude/token-log.jsonl
 Never blocks Claude: always exits 0.
 

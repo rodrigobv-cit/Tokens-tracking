@@ -493,7 +493,7 @@ def report(rows, name, save=True):
         txt = " → ".join(f"{MODE_LABELS.get(m, m)}" + (f" (at +{dur(o)})" if i else "") for i, (o, m) in enumerate(modes))
         L.append(f"- **Claude Code mode:** {txt}")
     else:
-        L.append("- **Claude Code mode:** not recorded (entries predate this field; re-run install.sh)")
+        L.append("- **Claude Code mode:** not recorded (entries predate this field, or the hook is not active; check the plugin is enabled and restart the session)")
     L.append(f"- **Model:** {seq_text(models)}")
     L.append(f"- **Effort level:** {seq_text(efforts) if efforts else 'not recorded (older entries, or no effort field in the hook payload)'}")
     L.append("")
